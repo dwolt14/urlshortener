@@ -1,11 +1,24 @@
 const frisby = require('frisby');
+const trim = require('trim');
 
 let url = 'http://localhost:3000';
 let targetUrl = 'http://example.com';
 let createLocation = '/create';
 
-let user = process.env.USER;
-let password = process.env.PASSWORD;
+let user = '';
+let password = '';
+
+if(process.env.USER) {
+    user = trim(process.env.USER);
+}
+
+if(process.env.PASSWORD) {
+    password = trim(process.env.PASSWORD);
+}
+
+frisby.globalSetup({
+  timeout: 10000,
+});
 
 if(process.env.AUTH === 'true') {
     if(!user || !password) {
