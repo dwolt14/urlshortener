@@ -4,6 +4,7 @@ if(process.env.TRAVIS && process.argv.indexOf('detached') === -1) {
     const child = spawn('node', ['app.js', 'detached'], {detached: true, stdio: 'ignore'});
     child.unref();
     console.log('Spawning detached server');
+    setTimeout(() => {console.log('Leaving main process')}, 10000);
 } else {
     const port = 3000;
     const app = require('./app.js');
