@@ -3,8 +3,12 @@ node_js: "7"
 env: 
   - AUTH=false
   - AUTH=true USER=test PASSWORD=secret
+# Install dependencies for the testing environment
 install: npm install
-before_script: npm start
+# Build and start the container
+before_script: 
+  - docker build -t testshortener .
+  - docker run -p 3000:3000 -e AUTH=$AUTH -e USER=$USER -e PASSWORD=$PASSWORD --name testcon1 testshortener
 script:
   - npm run lint
   - npm test

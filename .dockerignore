@@ -1,0 +1,15 @@
+#Ignore Dockerfile itself
+Dockerfile
+
+#Ignore Logs
+*.log
+npm-debug.log*
+
+#Ignore node modules of the local system
+node_modules
+
+#Do not include tests
+tests/*
+
+#Ignore configuration files and folders
+.*
